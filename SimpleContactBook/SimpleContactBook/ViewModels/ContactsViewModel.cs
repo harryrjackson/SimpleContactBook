@@ -8,12 +8,12 @@ namespace SimpleContactBook.ViewModels
 {
     public class ContactsViewModel : ObservableObject
     {
-        private Contact _selectContact;
+        private Contact _selectedContact;
 
-        public Contact SelectContact
+        public Contact SelectedContact
         {
-            get { return _selectContact; }
-            set { OnPropertyChanged(ref _selectContact,  value); }
+            get { return _selectedContact; }
+            set { OnPropertyChanged(ref _selectedContact,  value); }
         }
 
         public ObservableCollection<Contact> Contacts { get; private set; }

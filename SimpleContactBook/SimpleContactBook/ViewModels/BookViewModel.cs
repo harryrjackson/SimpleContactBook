@@ -10,11 +10,11 @@ namespace SimpleContactBook.ViewModels
     {
         private IContactDataService _service;
 
-        private ContactsViewModel _contactVM;
+        private ContactsViewModel _contactsVM;
         public ContactsViewModel ContactsVM
         {
-            get { return _contactVM; }
-            set { OnPropertyChanged(ref _contactVM, value); }   
+            get { return _contactsVM; }
+            set { OnPropertyChanged(ref _contactsVM, value); }   
         }
 
         public ICommand LoadContactsCommand { get; private set; }

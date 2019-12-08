@@ -40,8 +40,8 @@ namespace SimpleContactBook.Services
                     Name = "Jane Doe",
                     PhoneNumbers = new string[]
                     {
-                        "555-111-1111",
-                        "555-222-2222"
+                        "777-111-1111",
+                        "777-222-2222"
                     },
                     Emails = new string[]
                     {
@@ -50,8 +50,8 @@ namespace SimpleContactBook.Services
                     },
                     Locations = new string[]
                     {
-                        "111 Fake Street",
-                        "333 Fake Ave"
+                        "888 Fake Street",
+                        "999 Fake Ave"
                     }
                 },
 
