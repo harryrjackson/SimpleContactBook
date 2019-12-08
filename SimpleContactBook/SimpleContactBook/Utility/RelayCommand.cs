@@ -8,53 +8,43 @@ namespace SimpleContactBook.Utility
 
         #region Variables
 
-        readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;
+        private readonly Action<T> _execute = null;
+        private readonly Func<T, bool> _canExecute = null;
 
         #endregion
 
         #region Constructors
 
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute) 
+        public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null) 
         {
-            if (execute == null)
-            {
-                throw new NullReferenceException(nameof(execute));
-            }
-
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-
-        public RelayCommand(Action<object> execute) : this(execute, null)
-        {
-
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute ?? (_ => true);
         }
 
         #endregion
 
         public event EventHandler CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         #region Properties
 
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute == null ? true : _canExecute(parameter);
-        }
+        public bool CanExecute(object parameter) => _canExecute((T)parameter);
 
         #endregion
 
         #region Methods
 
-        public void Execute(object parameter)
-        {
-            _execute.Invoke(parameter);
-        }
+        public void Execute(object parameter) => _execute((T)parameter);
 
         #endregion
+    }
+
+    public class RelayCommand : RelayCommand<object>
+    {
+        public RelayCommand(Action execute) : base(_ => execute()) { }
+        public RelayCommand(Action execute, Func<bool> canExecute) : base(_ => execute(), _ => canExecute()) { }
     }
 }
