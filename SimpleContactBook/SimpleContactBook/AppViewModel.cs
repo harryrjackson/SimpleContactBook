@@ -1,4 +1,5 @@
 ﻿
+using SimpleContactBook.Services;
 using SimpleContactBook.Utility;
 using SimpleContactBook.ViewModels;
 
@@ -32,7 +33,8 @@ namespace SimpleContactBook
 
         public AppViewModel()
         {
-            BookVM = new BookViewModel();
+            var dataService = new MockDataService();
+            BookVM = new BookViewModel(dataService);
             CurrentView = BookVM;
         }
 
