@@ -34,7 +34,9 @@ namespace SimpleContactBook
         public AppViewModel()
         {
             var dataService = new MockDataService();
-            BookVM = new BookViewModel(dataService);
+            var dialogService = new WindowDialogService();
+
+            BookVM = new BookViewModel(dataService, dialogService);
             CurrentView = BookVM;
         }
 

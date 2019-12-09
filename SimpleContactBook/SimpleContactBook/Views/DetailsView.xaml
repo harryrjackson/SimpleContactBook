@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SimpleContactBook.Views"
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="450">
-    <Grid>
+    <Grid Visibility="{Binding SelectedContact, Converter={StaticResource SelectedContactConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -42,6 +42,7 @@
                                     FallbackValue={StaticResource DefautlContactImage},
                                     TargetNullValue={StaticResource DefautlContactImage}}"/>
                     <Button Style="{StaticResource MenuIconButton}"
+                            Command="{Binding BrowseImageCommand}"
                             Background="{StaticResource GloomyPurple}"
                             Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
                             VerticalAlignment="Bottom"
@@ -52,18 +53,22 @@
                     </Button>
                 </Grid>
             </StackPanel>
+            
             <StackPanel Grid.Column="1"
                         VerticalAlignment="Bottom"
                         Orientation="Horizontal">
                 <Button Style="{StaticResource MenuIconButton}"
                         Background="{StaticResource MaximumBlueGreen}"
+                        Command="{Binding SaveCommand}"
                         Width="90"
                         Height="40"
                         Margin="5">
+                    <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="pack://siteoforigin:,,,/Resources/saveIcon.png"/>
                         <Label FontWeight="Bold">Save</Label>
                     </StackPanel>
+                    </Button.Content>
                 </Button>
             </StackPanel>
         </Grid>

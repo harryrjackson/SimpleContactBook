@@ -8,7 +8,8 @@ namespace SimpleContactBook.ViewModels
 {
     public class BookViewModel : ObservableObject
     {
-        private IContactDataService _service;
+        private IContactDataService _dataService;
+        private IDialogService _dialogService;
 
         private ContactsViewModel _contactsVM;
         public ContactsViewModel ContactsVM
@@ -20,22 +21,22 @@ namespace SimpleContactBook.ViewModels
         public ICommand LoadContactsCommand { get; private set; }
         public ICommand LoadFavoritesCommand { get; private set; }
 
-        public BookViewModel(IContactDataService service)
+        public BookViewModel(MockDataService dataService, IDialogService dialogService)
         {
-            ContactsVM = new ContactsViewModel();
-            _service = service;
+            ContactsVM = new ContactsViewModel(dataService, dialogService);
+            _dataService = dataService;
             LoadContactsCommand = new RelayCommand(LoadContacts);
             LoadFavoritesCommand = new RelayCommand(LoadFavorites);
         }
 
         private void LoadContacts()
         {
-            ContactsVM.LoadContacts(_service.GetContacts());
+            ContactsVM.LoadContacts(_dataService.GetContacts());
         }
 
         private void LoadFavorites()
         {
-            var favorites = _service.GetContacts().Where(c => c.IsFavorite);
+            var favorites = _dataService.GetContacts().Where(c => c.IsFavorite);
             ContactsVM.LoadContacts(favorites);
         }
     }
