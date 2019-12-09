@@ -4,12 +4,16 @@
              xmlns:local="clr-namespace:SimpleContactBook"
              xmlns:vm="clr-namespace:SimpleContactBook.ViewModels"
              xmlns:v="clr-namespace:SimpleContactBook.Views"
+             xmlns:helper="clr-namespace:SimpleContactBook.Helpers"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type vm:BookViewModel}">
             <v:BookView/>
         </DataTemplate>
         <BitmapImage x:Key="DefautlContactImage" UriSource="pack://siteoforigin:,,,/Resources/defaultContact.png"/>
+        <helper:BoolToVisibilityConverter x:Key="IsEditConverter"/>
+        <helper:NullToVisibilityConverter x:Key="SelectedContactConverter"/>
+        
         <!--Brushes (Palette from: https://flatuicolors.com/palette/de)-->
         <SolidColorBrush x:Key="BlueHorizon" Color="#FF4B6584"/>
         <SolidColorBrush x:Key="BlueGrey" Color="#FF778CA3"/>

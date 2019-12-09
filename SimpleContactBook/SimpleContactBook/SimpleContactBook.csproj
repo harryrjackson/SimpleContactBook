@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppViewModel.cs" />
+    <Compile Include="Helpers\Converters.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Services\IContactDataService.cs" />
     <Compile Include="Services\MockDataService.cs" />

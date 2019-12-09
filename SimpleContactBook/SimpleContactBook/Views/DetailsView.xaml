@@ -24,7 +24,13 @@
                         Margin="5">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel HorizontalAlignment="Center">
+                        <TextBox Text="{Binding SelectedContact.Name, FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Margin="5"/>
+                        
                         <Label Content="{Binding SelectedContact.Name, FallbackValue=NULL}"
+                               Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                                HorizontalAlignment="Center"
                                FontSize="24"/>
                     </StackPanel>
@@ -37,6 +43,7 @@
                                     TargetNullValue={StaticResource DefautlContactImage}}"/>
                     <Button Style="{StaticResource MenuIconButton}"
                             Background="{StaticResource GloomyPurple}"
+                            Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Right"
                             Foreground="Black"
@@ -72,16 +79,30 @@
                     <Label 
                         Content="Home"
                         Style="{StaticResource DetailLabel}"/>
+                    
+                    <TextBox Text="{Binding SelectedContact.PhoneNumbers[0], FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Stretch" 
+                                 Margin="5"/>
+                    
                     <Label 
                         Content="{Binding SelectedContact.PhoneNumbers[0], FallbackValue=NULL}"
+                        Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                         Style="{StaticResource ContentLabel}"/>
                     
                     <!-- Cell Numbers -->
                     <Label 
                         Content="Cell"
                         Style="{StaticResource DetailLabel}"/>
+                    
+                    <TextBox Text="{Binding SelectedContact.PhoneNumbers[1], FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                 Margin="5"/>
+                    
                     <Label 
                         Content="{Binding SelectedContact.PhoneNumbers[1], FallbackValue=NULL}"
+                        Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                         Style="{StaticResource ContentLabel}"/>
                 </StackPanel>
             </StackPanel>
@@ -100,15 +121,29 @@
                     <Label 
                         Content="Personal"
                         Style="{StaticResource DetailLabel}"/>
+                    
+                    <TextBox Text="{Binding SelectedContact.Emails[0], FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                 Margin="5"/>
+                    
                     <Label 
                         Content="{Binding SelectedContact.Emails[0], FallbackValue=NULL}"
+                        Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                         Style="{StaticResource ContentLabel}"/>
                     <!-- Work Email -->
                     <Label 
                         Content="Work"
                         Style="{StaticResource DetailLabel}"/>
+                    
+                    <TextBox Text="{Binding SelectedContact.Emails[1], FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                 Margin="5"/>
+                    
                     <Label 
                         Content="{Binding SelectedContact.Emails[1], FallbackValue=NULL}"
+                        Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                         Style="{StaticResource ContentLabel}"/>
                 </StackPanel>
             </StackPanel>
@@ -126,15 +161,32 @@
                     <Label 
                         Content="Home"
                         Style="{StaticResource DetailLabel}"/>
+                    
+                    <TextBox Text="{Binding SelectedContact.Locations[0], FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                 Margin="5"/>
+                    
                     <Label 
                         Content="{Binding SelectedContact.Locations[0], FallbackValue=NULL}"
+                        Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                         Style="{StaticResource ContentLabel}"/>
+                    
+                    
                     <!-- Work Location -->
+
                     <Label 
                         Content="Work"
                         Style="{StaticResource DetailLabel}"/>
+                    
+                    <TextBox Text="{Binding SelectedContact.Locations[1], FallbackValue=NULL, Mode=TwoWay}"
+                                 Visibility="{Binding IsEditMode, Converter={StaticResource IsEditConverter}}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                 Margin="5"/>
+                    
                     <Label 
                         Content="{Binding SelectedContact.Locations[1], FallbackValue=NULL}"
+                        Visibility="{Binding IsDisplayMode, Converter={StaticResource IsEditConverter}}"
                         Style="{StaticResource ContentLabel}"/>
                 </StackPanel>
             </StackPanel>
